@@ -12,12 +12,12 @@ int		Sample::getVars( ) const {
 	return this->_vars;
 }
 
-///			Constructer/Destroyer
-
 int		Sample::getNb_Sample_created( ) const {
 
 	return Sample::_nb_Sample_created;
 }
+
+///			Constructor/Destroyer
 
 Sample::Sample( int args ) : _vars(args) {
 
@@ -26,6 +26,7 @@ Sample::Sample( int args ) : _vars(args) {
 
 Sample::Sample(	) {
 
+										// TODO not counting default constructor
 
 }
 
@@ -33,13 +34,14 @@ Sample::Sample( const Sample& other) {
 
 	if (this != &other)
 	{
-		this->_vars = other.getVars();
+		this->_vars = other.getVars();	// TODO
 	}
 	*this = other;
 }
 
 Sample::~Sample( ) {
 
+	// TODO
 
 }
 
@@ -47,7 +49,7 @@ Sample &	Sample::operator=( const Sample& rhs ) {
 
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();
+		this->_vars = rhs.getVars();	// TODO
 	}
 	return *this;
 }
@@ -56,6 +58,7 @@ Sample &	Sample::operator=( const Sample& rhs ) {
 
 void	Sample::doStuff( ) const {
 
+	// TODO
 
 }
 
