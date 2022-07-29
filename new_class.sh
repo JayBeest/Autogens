@@ -29,10 +29,9 @@ else
   CLASS_N=$1
 fi
 
-CLASS_N=$(echo "$CLASS_N"| awk '{print toupper(substr($0,0,1))tolower(substr($0,2))}')
+CLASS_N=$(echo "$CLASS_N"| awk '{print toupper(substr($0,0,1))substr($0,2)}')
 HEADER_N=$(echo "$CLASS_N"| awk '{print toupper($0)}')"_H"
 FILE_N="$CLASS_N"
-CLASS_N="Class""$CLASS_N"
 
 if [ -f "$SRC_DIR$FILE_N.hpp" ]; then
   while [[ "$ANSWER" == "" ]]; do
