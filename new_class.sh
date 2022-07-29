@@ -65,23 +65,23 @@ class $CLASS_N {
 
 public:
 
-	int			getId( ) const;
-	int			getVars( ) const;
-	static int	getNb_${CLASS_N}_created( );
+	int				getId( ) const;
+	int				getVars( ) const;
+	static int		getNb_${CLASS_N}_created( );
 
-	explicit	$CLASS_N( int arg );
-				$CLASS_N( );
-				$CLASS_N( const $CLASS_N & src );
-				~$CLASS_N( );
-				$CLASS_N & operator=( const $CLASS_N & rhs);
+	explicit		$CLASS_N( int arg );
+					$CLASS_N( );
+					$CLASS_N( const $CLASS_N & src );
+					~$CLASS_N( );
+					$CLASS_N & operator=( const $CLASS_N & rhs);
 
-	void		doStuff() const;
+	void			doStuff() const;
 
 private:
 
-	int			_id;
-	int			_vars;
-	static int	_nb_${CLASS_N}_created;
+	int				_id;
+	int				_vars;
+	static int		_nb_${CLASS_N}_created;
 
 };
 
