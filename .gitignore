@@ -2,3 +2,5 @@
 Makefile
 src/
 .vscode/
+bin/
+obj/
