@@ -1,8 +1,7 @@
 #!/bin/bash
 
-new_makefile()
+function new_makefile()
 {
-
 BIN_DIR="bin/"
 OBJ_DIR="obj/"
 SRC_DIR="src/"
@@ -32,19 +31,6 @@ if ! [ -e "$SRC_DIR" ]
 then
   mkdir $SRC_DIR
 fi
-
-#if [[ "$1" == "" ]]
-#then
-#  echo -n "Project name: "
-#  read -r NAME
-#  case "$NAME" in
-#    "")
-#      return
-#      ;;
-#  esac
-#else
-#  NAME=$1
-#fi
 
 if [ -f "Makefile" ]
 then
@@ -129,5 +115,4 @@ if [ $WRITE_MAKEFILE ]; then
   echo;
   } >> "Makefile"
 fi
-
 }

@@ -2,7 +2,6 @@
 
 function new_class()
 {
-
 DIR="${BASH_SOURCE%/*}"
 if [ ! -d "$DIR" ]; then DIR="$PWD"; fi
 

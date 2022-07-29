@@ -1,8 +1,7 @@
 #!/bin/bash
 
-new_project()
+function new_project()
 {
-
 if [ -e ".project_name" ]; then
   PROJECT="$(cat .project_name)"
 elif [[ "$1" == "" ]]
