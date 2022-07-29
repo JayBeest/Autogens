@@ -67,9 +67,9 @@ public:
 
 	int			getId( ) const;
 	int			getVars( ) const;
-	int			getNb_${CLASS_N}_created( ) const;
+	static int	getNb_${CLASS_N}_created( );
 
-				$CLASS_N( int arg );
+	explicit	$CLASS_N( int arg );
 				$CLASS_N( );
 				$CLASS_N( const $CLASS_N & src );
 				~$CLASS_N( );
@@ -125,7 +125,7 @@ int		$CLASS_N::getVars( ) const {
 	return this->_vars;
 }
 
-int		$CLASS_N::getNb_${CLASS_N}_created( ) const {
+int		$CLASS_N::getNb_${CLASS_N}_created( ) {
 
 	return $CLASS_N::_nb_${CLASS_N}_created;
 }
