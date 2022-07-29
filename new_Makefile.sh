@@ -86,6 +86,7 @@ if [ $WRITE_MAKEFILE ]; then
   echo 'all: $(BIN)';
   echo;
   echo '$(BIN): $(OBJ)';
+  echo '	$(Q)mkdir -p $(@D)';
   echo '	$(VECHO)';
   printf '	$(VECHO) "\\033[36mLinking binary file:     $@ 🚨\\033[0m"\n';
   echo '	$(VECHO)';
