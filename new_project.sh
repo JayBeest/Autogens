@@ -81,7 +81,7 @@ fi
 echo "$PROJECT" > ".project_name"
 cat << EOF > "src/$PROJECT.cpp"
 #include <iostream>
-#include "ClassSample.hpp"
+#include "Sample.hpp"
 
 using namespace ::std;
 
