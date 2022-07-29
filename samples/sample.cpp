@@ -2,35 +2,35 @@
 
 ///			Public:
 
-int		ClassSample::getId( ) const {
+int		Sample::getId( ) const {
 
 	return this->_id;
 }
 
-int		ClassSample::getVars( ) const {
+int		Sample::getVars( ) const {
 
 	return this->_vars;
 }
 
-int		ClassSample::getNb_ClassSample_created( ) const {
+int		Sample::getNb_Sample_created( ) {
 
-	return ClassSample::_nb_ClassSample_created;
+	return Sample::_nb_Sample_created;
 }
 
 ///			Constructor/Destroyer
 
-ClassSample::ClassSample( int args ) : _vars(args) {
+Sample::Sample( int args ) : _vars(args) {
 
-	this->_id = _nb_ClassSample_created++;
+	this->_id = _nb_Sample_created++;
 }
 
-ClassSample::ClassSample(	) {
+Sample::Sample(	) {
 
 										// TODO not counting default constructor
 
 }
 
-ClassSample::ClassSample( const ClassSample& other) {
+Sample::Sample( const Sample& other) {
 
 	if (this != &other)
 	{
@@ -39,13 +39,13 @@ ClassSample::ClassSample( const ClassSample& other) {
 	*this = other;
 }
 
-ClassSample::~ClassSample( ) {
+Sample::~Sample( ) {
 
 	// TODO
 
 }
 
-ClassSample &	ClassSample::operator=( const ClassSample& rhs ) {
+Sample &	Sample::operator=( const Sample& rhs ) {
 
 	if (this != &rhs)
 	{
@@ -56,7 +56,7 @@ ClassSample &	ClassSample::operator=( const ClassSample& rhs ) {
 
 ///			Functions/Methods
 
-void	ClassSample::doStuff( ) const {
+void	Sample::doStuff( ) const {
 
 	// TODO
 
@@ -66,4 +66,4 @@ void	ClassSample::doStuff( ) const {
 
 
 
-int	ClassSample::_nb_ClassSample_created = 0;
+int	Sample::_nb_Sample_created = 0;

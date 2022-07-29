@@ -1,27 +1,27 @@
 #ifndef SAMPLE_H
 # define SAMPLE_H
 
-class ClassSample {
+class Sample {
 
 public:
 
-	int			getId( ) const;
-	int			getVars( ) const;
-	int			getNb_ClassSample_created( ) const;
+	int				getId( ) const;
+	int				getVars( ) const;
+	static int		getNb_Sample_created( );
 
-				ClassSample( int arg );
-				ClassSample( );
-				ClassSample( const ClassSample & src );
-				~ClassSample( );
-				ClassSample & operator=( const ClassSample & rhs);
+	explicit		Sample( int arg );
+					Sample( );
+					Sample( const Sample & src );
+					~Sample( );
+					Sample & operator=( const Sample & rhs);
 
-	void		doStuff() const;
+	void			doStuff() const;
 
 private:
 
-	int			_id;
-	int			_vars;
-	static int	_nb_ClassSample_created;
+	int				_id;
+	int				_vars;
+	static int		_nb_Sample_created;
 
 };
 
