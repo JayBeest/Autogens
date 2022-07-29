@@ -4,18 +4,21 @@ function new_project()
 {
 if [ -e ".project_name" ]; then
   PROJECT="$(cat .project_name)"
+  echo "$PROJECT"
 elif [[ "$1" == "" ]]
 then
     echo -n "Project not initialized, name it: "
     read -r PROJECT
     if [[ "$PROJECT" == "" ]]; then
+      echo "quitting.."
       return
     fi
 else
   PROJECT=$1
 fi
 
-echo
+INIT=""
+
 while [[ "$INIT" == "" ]]; do
   echo "about to initialize project '$PROJECT' here:"
   echo -n "$(pwd) <- OK? "
@@ -25,6 +28,7 @@ while [[ "$INIT" == "" ]]; do
       echo "Initializing $PROJECT.."
       ;;
     [nN] | [nN][oO])
+      echo "quitting.."
       return
       ;;
     "")

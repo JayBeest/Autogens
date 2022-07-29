@@ -16,11 +16,12 @@ if ! [ -e ".project_name" ]; then
     else
       echo "$NAME" > ".project_name"; fi
   else
-      echo "$1" > ".$1"; fi
+      echo "$1" > ".$1";
+  fi
+else
+  echo -n "-> Project: "; cat ".project_name"
 fi
 NAME="$(cat .project_name)"
-
-echo "NAME is now: $NAME"
 
 if ! [ -e "$BIN_DIR" ]
 then
@@ -42,6 +43,7 @@ then
     WRITE_MAKEFILE=1
     ;;
     *)
+      echo "quitting.."
       return
       ;;
   esac

@@ -2,17 +2,22 @@
 
 function new_class()
 {
-DIR="${BASH_SOURCE%/*}"
-if [ ! -d "$DIR" ]; then DIR="$PWD"; fi
-
 if ! [ -e ".project_name" ]; then
-  echo ".project_name not found, not in project directory?"
-  return
+  if [[ "$1" == "" ]]; then
+  echo -n ".project_name not found, name your project: "
+  read -r NAME;
+    if [[ "$NAME" == "" ]]; then
+      echo "quitting.."
+      return;
+    else
+      echo "$NAME" > ".project_name"; fi
+  else
+      echo "$1" > ".$1"; fi
 else
-  echo -n "project name: "; cat ".project_name"
+  echo -n "-> Project: "; cat ".project_name"
 fi
 
-SRC_DIR="$DIR/src/"
+SRC_DIR="src/"
 
 if [[ $1 == "" ]]; then
   echo -n "Class name: "
@@ -26,7 +31,8 @@ fi
 
 CLASS_N=$(echo "$CLASS_N"| awk '{print toupper(substr($0,0,1))tolower(substr($0,2))}')
 HEADER_N=$(echo "$CLASS_N"| awk '{print toupper($0)}')"_H"
-FILE_N="Class""$CLASS_N"
+FILE_N="$CLASS_N"
+CLASS_N="Class""$CLASS_N"
 
 if [ -f "$SRC_DIR$FILE_N.hpp" ]; then
   while [[ "$ANSWER" == "" ]]; do
