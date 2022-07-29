@@ -1,27 +1,38 @@
 #!/bin/bash
 
-new_class()
+function new_class()
 {
 
-BIN_DIR="bin/"
-OBJ_DIR="obj/"
-SRC_DIR="src/"
+DIR="${BASH_SOURCE%/*}"
+if [ ! -d "$DIR" ]; then DIR="$PWD"; fi
 
-if [ "$1" == "" ]; then
-  while [ "$CLASS_N" == "" ]; do
-    read -r -p "Class name: " -r CLASS_N
-  done
+if ! [ -e ".project_name" ]; then
+  echo ".project_name not found, not in project directory?"
+  return
+else
+  echo -n "project name: "; cat ".project_name"
+fi
+
+SRC_DIR="$DIR/src/"
+
+if [[ $1 == "" ]]; then
+  echo -n "Class name: "
+  read -r CLASS_N;
+  if [[ "$CLASS_N" == "" ]]; then
+    echo "quitting.."
+    return; fi
 else
   CLASS_N=$1
 fi
 
-CLASS_N=$(echo $CLASS_N | awk '{print toupper(substr($0,0,1))tolower(substr($0,2))}')
-HEADER_N=$(echo $CLASS_N | awk '{print toupper($0)}')"_H"
+CLASS_N=$(echo "$CLASS_N"| awk '{print toupper(substr($0,0,1))tolower(substr($0,2))}')
+HEADER_N=$(echo "$CLASS_N"| awk '{print toupper($0)}')"_H"
 FILE_N="Class""$CLASS_N"
 
 if [ -f "$SRC_DIR$FILE_N.hpp" ]; then
-  while [ "$ANSWER" == "" ]; do
-      read -r -p "overwrite .$FILE_N.hpp? (y/n [n]) " ANSWER
+  while [[ "$ANSWER" == "" ]]; do
+      echo -n "overwrite $SRC_DIR$FILE_N.hpp? (y/n [n]) "
+      read -r ANSWER
       case "$ANSWER" in
         [yY] | [yY][eE][sS])
           echo "overwriting $FILE_N.hpp.."
@@ -29,16 +40,14 @@ if [ -f "$SRC_DIR$FILE_N.hpp" ]; then
           ;;
         [nN] | [nN][oO])
           ;;
-        "")
-          ANSWER="no"
-          ;;
         *)
-          ANSWER=""
+          echo "skipping.."
+          return
           ;;
       esac
   done
 else
-  echo "writing $SRC_DIR$FILE_N.hpp.."
+  echo "writing $FILE_N.hpp.."
   WRITE_HPP=1
 fi
 
@@ -76,26 +85,22 @@ EOF
 fi
 
 if [ -f "$SRC_DIR$FILE_N.cpp" ]; then
-  ANSWER=""
-  while [ "$ANSWER" == "" ]; do
-      read -r -p "overwrite $SRC_DIR$FILE_N.cpp? (y/n [n]) " ANSWER
-      case "$ANSWER" in
+  while [[ "$ANSWER2" == "" ]]; do
+      echo -n "overwrite $SRC_DIR$FILE_N.cpp? (y/n [n]) "
+      read -r ANSWER2
+      case "$ANSWER2" in
         [yY] | [yY][eE][sS])
-          echo "Overwriting $SRC_DIR$FILE_N.cpp.."
+          echo "Overwriting $FILE_N.cpp.."
           WRITE_CPP=1
           ;;
         [nN] | [nN][oO])
           ;;
-        "")
-          ANSWER="no"
-          ;;
         *)
-          ANSWER=""
           ;;
       esac
     done
 else
-  echo "Writing $SRC_DIR$FILE_N.cpp.."
+  echo "Writing $FILE_N.cpp.."
   WRITE_CPP=1
 fi
 
@@ -172,7 +177,4 @@ void	$CLASS_N::doStuff( ) const {
 int	$CLASS_N::_nb_${CLASS_N}_created = 0;
 EOF
 fi
-
 }
-
-new_class "$@"

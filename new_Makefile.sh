@@ -7,6 +7,22 @@ BIN_DIR="bin/"
 OBJ_DIR="obj/"
 SRC_DIR="src/"
 
+if ! [ -e ".project_name" ]; then
+  if [[ "$1" == "" ]]; then
+  echo -n ".project_name not found, name your project: "
+  read -r NAME;
+    if [[ "$NAME" == "" ]]; then
+      echo "quitting.."
+      return;
+    else
+      echo "$NAME" > ".project_name"; fi
+  else
+      echo "$1" > ".$1"; fi
+fi
+NAME="$(cat .project_name)"
+
+echo "NAME is now: $NAME"
+
 if ! [ -e "$BIN_DIR" ]
 then
   mkdir $BIN_DIR
@@ -17,34 +33,30 @@ then
   mkdir $SRC_DIR
 fi
 
-if ls -1 src/*.cpp > /dev/null 2>&1; then
-  SRC_LIST=$(ls -1 src/*.cpp | sed 's/.*\///' | awk 'NR>1{printf "\t\t\t\t"}; {print $0" \\"}')
-else
-  SRC_LIST=""
-fi
-
-if [ "$1" == "" ]
-then
-  read -p "Project name: " -r NAME
-  case "$NAME" in
-    [])
-      exit
-      ;;
-  esac
-else
-  NAME=$1
-fi
+#if [[ "$1" == "" ]]
+#then
+#  echo -n "Project name: "
+#  read -r NAME
+#  case "$NAME" in
+#    "")
+#      return
+#      ;;
+#  esac
+#else
+#  NAME=$1
+#fi
 
 if [ -f "Makefile" ]
 then
-  read -p "overwrite ./Makefile? (y/n [n]) " ANSWER
+  echo -n "overwrite ./Makefile? (y/n [n]) "
+  read -r ANSWER
   case "$ANSWER" in
     [yY] | [yY][eE][sS])
     echo 'overwriting...'
     WRITE_MAKEFILE=1
     ;;
     *)
-      exit
+      return
       ;;
   esac
 else
