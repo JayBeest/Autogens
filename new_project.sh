@@ -24,7 +24,7 @@ while [[ "$INIT" == "" ]]; do
   echo -n "$(pwd) <- OK? "
   read -r INIT
   case "$INIT" in
-    [yY] | [yY][eE][sS])
+    [yY] | [yY][eE][sS] | [oO][kK])
       echo "Initializing $PROJECT.."
       ;;
     [nN] | [nN][oO])
@@ -81,26 +81,17 @@ fi
 echo "$PROJECT" > ".project_name"
 cat << EOF > "src/$PROJECT.cpp"
 #include <iostream>
-#include "Sample.hpp"
-
-using namespace ::std;
 
 int main ( ){
 
-	Sample	test1(6);
-	Sample	test2;
-
-	cout << test1.getVars() << endl;
-	cout << test2.getVars() << endl;
-	cout << Sample::getNb_Sample_created() << endl;
-
-	test2 = test1;
-
-	cout << test1.getVars() << endl;
-	cout << test2.getVars() << endl;
-	cout << Sample::getNb_Sample_created() << endl;
 
 	return 0;
 }
 EOF
+cat << EOF >> ".gitignore"
+bin/
+obj/
+
+EOF
+
 }

@@ -114,6 +114,8 @@ if [ $WRITE_CPP ]; then
 
 ///			Public:
 
+///			Getters/Setters
+
 int		$CLASS_N::getId( ) const {
 
 	return this->_id;
