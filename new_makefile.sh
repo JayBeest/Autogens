@@ -70,7 +70,7 @@ if [ $WRITE_MAKEFILE ]; then
   echo;
   echo 'OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))';
   echo;
-  echo 'CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address';
+  echo 'CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address';
   echo "CC			=	c++";
   echo;
   echo 'ifeq ("$(VERBOSE)","1")';
