@@ -88,10 +88,9 @@ int main ( ){
 	return 0;
 }
 EOF
-cat << EOF >> ".gitignore"
+cat << EOF > ".gitignore"
 bin/
 obj/
-
 EOF
 
 }

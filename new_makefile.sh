@@ -88,13 +88,13 @@ if [ $WRITE_MAKEFILE ]; then
   echo '$(BIN): $(OBJ)';
   echo '	$(Q)mkdir -p $(@D)';
   echo '	$(VECHO)';
-  printf '	$(VECHO) "\\033[36mLinking binary file:     $@ 🚨\\033[0m"\n';
+  printf '	$(VECHO) "\\033[36mLinking binary file:     \\033[0m$@ 🚨"\n';
   echo '	$(VECHO)';
   echo '	$(Q)$(CC) $^ $(CFLAGS) -o $@';
   echo;
   echo '$(OBJ_DIR)%.o:%.cpp';
   echo '	$(Q)mkdir -p $(@D)';
-  printf '	$(VECHO) "\\033[34mCompiling object file:   $@\\033[0m"\n';
+  printf '	$(VECHO) "\\033[34mCompiling object file:   \\033[0m$@"\n';
   echo '	$(Q)$(CC) -c $< $(CFLAGS) -o $@';
   echo;
   echo 'clean:';

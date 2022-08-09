@@ -114,7 +114,7 @@ if [ $WRITE_CPP ]; then
 
 ///			Public:
 
-///			Getters/Setters
+///			Getters / Setters
 
 int		$CLASS_N::getId( ) const {
 
@@ -131,7 +131,7 @@ int		$CLASS_N::getNb_${CLASS_N}_created( ) {
 	return $CLASS_N::_nb_${CLASS_N}_created;
 }
 
-///			Constructor/Destroyer
+///			Constructor / Destructor
 
 $CLASS_N::$CLASS_N( int args ) : _vars(args) {
 
@@ -148,9 +148,9 @@ $CLASS_N::$CLASS_N( const $CLASS_N& other) {
 
 	if (this != &other)
 	{
-		this->_vars = other.getVars();	// TODO
+	  *this = other;
+	  // TODO
 	}
-	*this = other;
 }
 
 $CLASS_N::~$CLASS_N( ) {
@@ -168,7 +168,7 @@ $CLASS_N &	$CLASS_N::operator=( const $CLASS_N& rhs ) {
 	return *this;
 }
 
-///			Functions/Methods
+///			Functions / Methods
 
 void	$CLASS_N::doStuff( ) const {
 
