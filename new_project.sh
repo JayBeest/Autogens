@@ -91,6 +91,9 @@ EOF
 cat << EOF > ".gitignore"
 bin/
 obj/
+.idea/
+.vscode/
+
 EOF
 
 }
