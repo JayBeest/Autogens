@@ -68,6 +68,9 @@ if [ $WRITE_MAKEFILE ]; then
   echo -n "SRC			=	";
   ls -1 src/*.cpp | sed 's/.*\///' | awk 'NR>1{printf "\t\t\t\t"}; {print $0" \\"}';
   echo;
+  echo -n "HEADERS		=	";
+  ls -1 src/*.hpp | sed 's/.*\///' | awk 'NR>1{printf "\t\t\t\t"}; {print $0" \\"}';
+  echo;
   echo 'OBJ 		=	$(addprefix $(OBJ_DIR), $(SRC:%.cpp=%.o))';
   echo;
   echo 'CFLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic # -g -fsanitize=address';
@@ -81,8 +84,6 @@ if [ $WRITE_MAKEFILE ]; then
   echo 'VECHO = @echo';
   echo 'endif';
   echo;
-  echo 'vpath %.cpp $(SRC_DIR)';
-  echo;
   echo 'all: $(BIN)';
   echo;
   echo '$(BIN): $(OBJ)';
@@ -92,7 +93,7 @@ if [ $WRITE_MAKEFILE ]; then
   echo '	$(VECHO)';
   echo '	$(Q)$(CC) $^ $(CFLAGS) -o $@';
   echo;
-  echo '$(OBJ_DIR)%.o:%.cpp';
+  echo '$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(addprefix $(SRC_DIR), $(HEADERS))';
   echo '	$(Q)mkdir -p $(@D)';
   printf '	$(VECHO) "\\033[34mCompiling object file:   \\033[0m$@"\n';
   echo '	$(Q)$(CC) -c $< $(CFLAGS) -o $@';
