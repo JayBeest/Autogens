@@ -70,9 +70,9 @@ public:
 
 	explicit		$CLASS_N( int arg );
 					$CLASS_N( );
-					$CLASS_N( const $CLASS_N & src );
+					$CLASS_N( const $CLASS_N & other );
 					~$CLASS_N( );
-					$CLASS_N & operator=( const $CLASS_N & rhs);
+					$CLASS_N & operator=( const $CLASS_N & rhs );
 
 	void			doStuff() const;
 
@@ -152,7 +152,7 @@ $CLASS_N::$CLASS_N( ) {
   		std::cout << "[$CLASS_N] Default constructor called" << std::endl;
 }
 
-$CLASS_N::$CLASS_N( const $CLASS_N& other) {
+$CLASS_N::$CLASS_N( const $CLASS_N & other) {
 
 	if (this != &other)
 	{
@@ -170,7 +170,7 @@ $CLASS_N::~$CLASS_N( ) {
   		std::cout << "[$CLASS_N] Destructor called" << std::endl;
 }
 
-$CLASS_N &	$CLASS_N::operator=( const $CLASS_N& rhs ) {
+$CLASS_N &	$CLASS_N::operator=( const $CLASS_N & rhs ) {
 
 	if (this != &rhs)
 	{
