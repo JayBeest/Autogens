@@ -110,11 +110,6 @@ if [ $WRITE_MAKEFILE ]; then
   echo;
   echo 're: clean all';
   echo;
-  echo 'reall: fclean all';
-  echo;
-  echo 'rerun: re';
-  echo '	./miniRT';
-  echo;
   echo '.PHONY:	all libft norme clean fclean re reall';
   echo;
   } >> "Makefile"
