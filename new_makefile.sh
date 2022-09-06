@@ -110,8 +110,7 @@ if [ $WRITE_MAKEFILE ]; then
   echo;
   echo 're: clean all';
   echo;
-  echo '.PHONY:	all libft norme clean fclean re reall';
-  echo;
+  echo '.PHONY:	all clean fclean re';
   } >> "Makefile"
 fi
 }
