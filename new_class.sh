@@ -60,6 +60,8 @@ if [ $WRITE_HPP ]; then
 #ifndef $HEADER_N
 # define $HEADER_N
 
+# include <iostream>
+
 class $CLASS_N {
 
 public:
@@ -72,7 +74,7 @@ public:
 					$CLASS_N( );
 					$CLASS_N( const $CLASS_N & other );
 					~$CLASS_N( );
-					$CLASS_N & operator=( const $CLASS_N & rhs );
+	$CLASS_N &			operator=( const Test & rhs );
 
 	void			doStuff() const;
 
@@ -114,7 +116,6 @@ fi
 
 if [ $WRITE_CPP ]; then
   cat << EOF > "$SRC_DIR$FILE_N.cpp"
-#include <iostream>
 #include "$FILE_N.hpp"
 
 ///			Public:
@@ -140,44 +141,55 @@ int		$CLASS_N::getNb_${CLASS_N}_created( ) {
 
 $CLASS_N::$CLASS_N( int args ) : _vars(args) {
 
-	this->_id = _nb_${CLASS_N}_created++;
 	if ($CLASS_N::_loud)
+	{
   		std::cout << "[$CLASS_N] Specific constructor called" << std::endl;
+	{
+	this->_id = _nb_${CLASS_N}_created++;
 }
 
 $CLASS_N::$CLASS_N( ) {
 
-										// TODO not counting default constructor
 	if ($CLASS_N::_loud)
+	{
   		std::cout << "[$CLASS_N] Default constructor called" << std::endl;
+	{
+					// TODO not counting default constructor
 }
 
-$CLASS_N::$CLASS_N( const $CLASS_N & other) {
+$CLASS_N::$CLASS_N( const $CLASS_N & other ) {
 
+	if ($CLASS_N::_loud)
+	{
+  		std::cout << "[$CLASS_N] Copy constructor called" << std::endl;
+	{
 	if (this != &other)
 	{
 	  *this = other;
 	  // TODO
 	}
-	if ($CLASS_N::_loud)
-  		std::cout << "[$CLASS_N] Copy constructor called" << std::endl;
 }
 
 $CLASS_N::~$CLASS_N( ) {
 
-	// TODO
 	if ($CLASS_N::_loud)
+	{
   		std::cout << "[$CLASS_N] Destructor called" << std::endl;
+	{
+	// TODO
 }
 
 $CLASS_N &	$CLASS_N::operator=( const $CLASS_N & rhs ) {
 
+	if ($CLASS_N::_loud)
+	{
+  		std::cout << "[$CLASS_N] Copy assignment operator called" << std::endl;
+	{
 	if (this != &rhs)
 	{
-		this->_vars = rhs.getVars();	// TODO
+		this->_vars = rhs.getVars();
+			// TODO
 	}
-	if ($CLASS_N::_loud)
-  		std::cout << "[$CLASS_N] Copy assignment operator called" << std::endl;
 	return *this;
 }
 
