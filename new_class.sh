@@ -74,7 +74,7 @@ public:
 					$CLASS_N( );
 					$CLASS_N( const $CLASS_N & other );
 					~$CLASS_N( );
-	$CLASS_N &			operator=( const Test & rhs );
+	$CLASS_N &			operator=( const $CLASS_N & rhs );
 
 	void			doStuff() const;
 
@@ -144,7 +144,7 @@ $CLASS_N::$CLASS_N( int args ) : _vars(args) {
 	if ($CLASS_N::_loud)
 	{
   		std::cout << "[$CLASS_N] Specific constructor called" << std::endl;
-	{
+	}
 	this->_id = _nb_${CLASS_N}_created++;
 }
 
@@ -153,7 +153,7 @@ $CLASS_N::$CLASS_N( ) {
 	if ($CLASS_N::_loud)
 	{
   		std::cout << "[$CLASS_N] Default constructor called" << std::endl;
-	{
+	}
 					// TODO not counting default constructor
 }
 
@@ -162,7 +162,7 @@ $CLASS_N::$CLASS_N( const $CLASS_N & other ) {
 	if ($CLASS_N::_loud)
 	{
   		std::cout << "[$CLASS_N] Copy constructor called" << std::endl;
-	{
+	}
 	if (this != &other)
 	{
 	  *this = other;
@@ -175,7 +175,7 @@ $CLASS_N::~$CLASS_N( ) {
 	if ($CLASS_N::_loud)
 	{
   		std::cout << "[$CLASS_N] Destructor called" << std::endl;
-	{
+	}
 	// TODO
 }
 
@@ -184,7 +184,7 @@ $CLASS_N &	$CLASS_N::operator=( const $CLASS_N & rhs ) {
 	if ($CLASS_N::_loud)
 	{
   		std::cout << "[$CLASS_N] Copy assignment operator called" << std::endl;
-	{
+	}
 	if (this != &rhs)
 	{
 		this->_vars = rhs.getVars();
